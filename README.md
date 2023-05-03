@@ -38,18 +38,13 @@ The project is developed with
     |
     └─ presentation
     │   ├─ view
-    │   │   ├─ data
-    │   │   └─ presentation
-    │   │       ├─ controllers
-    │   │       │   ├─ login
-    │   │       │   │   ─   login_binding.dart
-    │   │       │   │   ─   login_controller.dart
-    │   │       │   │   ─   login_input.dart
-    │   │       │   └─ ...
-    │   │       └─ views
-    │   │           ├─ login
-    │   │           │   ─   login_page.dart
-    │   │           └─ ...
+    │   │  ├─ pages
+    │   │  │   ─   event_detail.dart
+    │   │  │   ─   listing_page.dart
+    │   │  └─ widget
+    │   │       ├─ divider.dart
+    │   │       │─ event_card.dart
+    │   │       └─ search_text.dart
     │   └─ cubits
     │        ├─ base
     │        │   └─ base_cubit.dart
