@@ -58,7 +58,7 @@ The project is developed with
         ├─ config
         └─ constants
     ─   main.dart
-    ─   app.dart
+    ─   di.dart
 ─   analysis_options.yaml
 ─   build.yaml
 ─   pubspec.yaml
