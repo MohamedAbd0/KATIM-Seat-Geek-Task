@@ -1,10 +1,11 @@
+import 'package:equatable/equatable.dart';
 import 'package:katim_task/data/models/event_model.dart';
-import '../../../domain/repositories/api_repository.dart';
+import '../../../domain/repositories/online_repository.dart';
 import '../base/base_cubit.dart';
 part 'remote_events_state.dart';
 
 class RemoteEventsCubit extends BaseCubit<RemoteEventsState, List<Events>> {
-  final EventRepository _apiRepository;
+  final OnlineEventRepository _apiRepository;
 
   RemoteEventsCubit(this._apiRepository) : super(const RemoteEventsInit(), []);
 

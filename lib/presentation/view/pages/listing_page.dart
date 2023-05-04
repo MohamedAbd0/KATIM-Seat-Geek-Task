@@ -23,20 +23,26 @@ class _ListingPageState extends State<ListingPage> {
       body: SafeArea(
         child: Column(
           children: [
-            // search area
             const SearchTextFiled(),
-
-            // content area
             const SizedBox(
               height: SizeConstants.smallPadding,
             ),
             BlocBuilder<RemoteEventsCubit, RemoteEventsState>(
               builder: (context, state) {
                 if (state is RemoteEventsLoading) {
-                  return _loading(context);
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: ColorConstants.mainColor,
+                    ),
+                  );
                 } else if (state is RemoteEventsSuccess) {
                   if (state.events.isEmpty) {
-                    return _noResultFound(context);
+                    return const Center(
+                      child: Text(
+                        'Oops!, No '
+                        'Result Found.',
+                      ),
+                    );
                   } else {
                     return Expanded(
                       child: ListView.separated(
@@ -52,68 +58,32 @@ class _ListingPageState extends State<ListingPage> {
                     );
                   }
                 } else {
-                  return _homeText(context);
+                  return Center(
+                    child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        text: 'Seat Geek',
+                        style: TextStyle(
+                          fontSize: FontSizeConstants.large,
+                          fontWeight: FontWeight.bold,
+                          color: ColorConstants.mainColor,
+                        ),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: '\nFind and Discover events',
+                            style: DefaultTextStyle.of(context).style,
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
                 }
               },
             ),
-
             const SizedBox(
               height: SizeConstants.normalPadding,
             ),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _noResultFound(context) {
-    return _messageContent(
-      context,
-      const Text(
-        'Oops!, No '
-        'Result Found.',
-      ),
-    );
-  }
-
-  Widget _homeText(context) {
-    return _messageContent(
-      context,
-      RichText(
-        textAlign: TextAlign.center,
-        text: TextSpan(
-          text: 'Seat Geek',
-          style: TextStyle(
-            fontSize: FontSizeConstants.large,
-            fontWeight: FontWeight.bold,
-            color: ColorConstants.mainColor,
-          ),
-          children: <TextSpan>[
-            TextSpan(
-              text: '\nFind and Discover events',
-              style: DefaultTextStyle.of(context).style,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _loading(context) {
-    return _messageContent(
-      context,
-      CircularProgressIndicator(
-        color: ColorConstants.mainColor,
-      ),
-    );
-  }
-
-  Widget _messageContent(context, widget) {
-    return Expanded(
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.8,
-        child: Center(
-          child: widget,
         ),
       ),
     );

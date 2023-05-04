@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
-import 'package:katim_task/domain/repositories/api_repository.dart';
+import 'package:katim_task/domain/repositories/online_repository.dart';
 
 import '../../data/failure.dart';
 import '../../data/models/event_model.dart';
 
 class GetEvents {
-  final EventRepository eventRepository;
+  final OnlineEventRepository eventRepository;
   GetEvents(this.eventRepository);
 
   Future<Either<Failure, Events>> execute(String query) =>

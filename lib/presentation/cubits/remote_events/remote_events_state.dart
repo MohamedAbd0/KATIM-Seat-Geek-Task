@@ -1,6 +1,6 @@
 part of 'remote_events_cubit.dart';
 
-abstract class RemoteEventsState {
+abstract class RemoteEventsState extends Equatable {
   final List<EventModel> events;
   final String? error;
 
@@ -9,6 +9,7 @@ abstract class RemoteEventsState {
     this.error,
   });
 
+  @override
   List<Object?> get props => [events, error];
 }
 

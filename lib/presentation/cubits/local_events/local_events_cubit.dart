@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import '../../../domain/repositories/offline_repository.dart';
 part 'local_events_state.dart';
 
 class LocalEventsCubit extends Cubit<LocalEventsState> {
-  final DatabaseRepository _databaseRepository;
+  final OfflineEventRepository _databaseRepository;
 
   LocalEventsCubit(this._databaseRepository)
       : super(const LocalEventsSuccess(eventsID: []));

@@ -25,14 +25,12 @@ The project is developed with
     │   ├─ models
     │   │   ─   event_model.dart
     │   └─ repositories_impl
-    │   │   ─  api_repository_impl.dart
-    │   │   ─  offline_repository_impl.dart
+    │       ─  online_repository_impl.dart
+    │       ─  offline_repository_impl.dart
     ├─ domain
     │   ├─ repositories (abstract class)
-    │   │   ─  api_repository.dart
+    │   │   ─  online_repository.dart
     │   │   ─  offline_repository.dart
-    │   ├─ service
-    │   │   ─   ...
     │   └─ usecases
     │       └─ get_event.dart
     |
@@ -44,6 +42,7 @@ The project is developed with
     │   │  └─ widget
     │   │       ├─ divider.dart
     │   │       │─ event_card.dart
+    │   │       │─ favorite.dart
     │   │       └─ search_text.dart
     │   └─ cubits
     │        ├─ base
@@ -56,6 +55,7 @@ The project is developed with
     │             ─   remote_event_state.dart
     └─ ultis
         ├─ config
+        ├─ service
         └─ constants
     ─   main.dart
     ─   di.dart

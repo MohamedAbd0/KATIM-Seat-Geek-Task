@@ -1,9 +1,9 @@
-import '../../../domain/service/shared_pref.dart';
+import '../../../utils/service/shared_pref.dart';
 
 abstract class OfflineDataSource {
   Future<List<String>> geFavoritEventsIDs();
-  Future<void> favorite(String id);
-  Future<void> unfavorite(String id);
+  Future<bool> favorite(String id);
+  Future<bool> unfavorite(String id);
 }
 
 class OfflineDataSourceImpl implements OfflineDataSource {
@@ -21,22 +21,24 @@ class OfflineDataSourceImpl implements OfflineDataSource {
   }
 
   @override
-  Future<void> favorite(String id) async {
+  Future<bool> favorite(String id) async {
     List<String> ids = [];
     if (prefs.containsKey(_favoriteKey)) {
       ids = prefs.getStringList(_favoriteKey)!;
     }
     ids.add(id);
     prefs.setStringList(_favoriteKey, ids);
+    return true;
   }
 
   @override
-  Future<void> unfavorite(String id) async {
+  Future<bool> unfavorite(String id) async {
     List<String> ids = [];
     if (prefs.containsKey(_favoriteKey)) {
       ids = prefs.getStringList(_favoriteKey)!;
     }
     ids.remove(id);
     prefs.setStringList(_favoriteKey, ids);
+    return true;
   }
 }
