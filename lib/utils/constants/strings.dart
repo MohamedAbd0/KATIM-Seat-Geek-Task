@@ -1,3 +1,2 @@
-const String defoultIamge = 'https://montessoriinthewoods'
-    '.org/wp-content/uploads/2018/02/image-placeholder'
-    '-500x500.jpg';
+const String defoultIamge =
+    'https://myventurepad.com/wp-content/uploads/2018/09/Corporate-Events-DJ.jpg';

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../utils/constants/colors.dart';
 import '../../cubits/local_events/local_events_cubit.dart';
+import 'package:katim_task/di.dart' as di;
 
 class FavoriteIcon extends StatelessWidget {
   final int eventID;
@@ -14,7 +15,7 @@ class FavoriteIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localEventsCubit = BlocProvider.of<LocalEventsCubit>(context);
+    final localEventsCubit = di.locator<LocalEventsCubit>();
 
     return BlocBuilder<LocalEventsCubit, LocalEventsState>(
       builder: (context, state) {

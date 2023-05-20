@@ -5,7 +5,6 @@ import 'package:katim_task/data/datasource/online/event_remote_datasource.dart';
 import 'package:katim_task/data/failure.dart';
 import 'package:katim_task/data/models/event_model.dart';
 import '../../domain/repositories/online_repository.dart';
-import '../exception.dart';
 
 class OnlineEventRepositoryImpl implements OnlineEventRepository {
   OnlineEventRepositoryImpl({required this.remoteDataSource});
@@ -19,7 +18,7 @@ class OnlineEventRepositoryImpl implements OnlineEventRepository {
       return Right(result);
     } on SocketException {
       return const Left(ConnectionFailure('connection failure'));
-    } on ServerException {
+    } on ServerFailure {
       return const Left(ServerFailure('server failure'));
     } catch (e) {
       return Left(ConnectionFailure(e.toString()));

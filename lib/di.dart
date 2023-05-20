@@ -1,8 +1,8 @@
 import 'package:get_it/get_it.dart';
 import 'package:katim_task/data/datasource/online/event_remote_datasource.dart';
 import 'package:katim_task/data/repositories/online_repository_impl.dart';
+import 'package:katim_task/domain/usecases/favorites.dart';
 import 'package:katim_task/domain/usecases/get_events.dart';
-import 'package:http/http.dart' as http;
 
 import 'data/datasource/offline/event_offline_datasource.dart';
 import 'data/repositories/offline_repository_impl.dart';
@@ -17,10 +17,12 @@ void init() {
   // bloc
   locator
       .registerFactory<RemoteEventsCubit>(() => RemoteEventsCubit(locator()));
-  locator.registerFactory<LocalEventsCubit>(() => LocalEventsCubit(locator()));
+  locator.registerLazySingleton<LocalEventsCubit>(
+      () => LocalEventsCubit(locator()));
 
   //usecase
   locator.registerLazySingleton<GetEvents>(() => GetEvents(locator()));
+  locator.registerLazySingleton<Favorits>(() => Favorits(locator()));
 
   //repository
   locator.registerLazySingleton<OnlineEventRepository>(
@@ -33,6 +35,4 @@ void init() {
   locator.registerLazySingleton<RemoteDataSource>(() => RemoteDataSourceImpl());
   locator
       .registerLazySingleton<OfflineDataSource>(() => OfflineDataSourceImpl());
-
-  locator.registerLazySingleton(() => http.Client);
 }

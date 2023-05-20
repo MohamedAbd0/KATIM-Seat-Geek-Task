@@ -1,6 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:katim_task/data/repositories/offline_repository_impl.dart';
+import 'package:katim_task/domain/usecases/favorites.dart';
 import 'package:katim_task/presentation/cubits/local_events/local_events_cubit.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -12,7 +13,8 @@ void main() {
 
   setUp(() {
     mockGoalRepository = MockGoalRepository();
-    localEventsCubit = LocalEventsCubit(mockGoalRepository);
+    Favorits favorits = Favorits(mockGoalRepository);
+    localEventsCubit = LocalEventsCubit(favorits);
   });
 
   group('getEventsID()', () {

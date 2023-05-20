@@ -27,7 +27,7 @@ class OfflineDataSourceImpl implements OfflineDataSource {
       ids = prefs.getStringList(_favoriteKey)!;
     }
     ids.add(id);
-    prefs.setStringList(_favoriteKey, ids);
+    prefs.setStringList(_favoriteKey, ids.toSet().toList());
     return true;
   }
 
@@ -38,7 +38,7 @@ class OfflineDataSourceImpl implements OfflineDataSource {
       ids = prefs.getStringList(_favoriteKey)!;
     }
     ids.remove(id);
-    prefs.setStringList(_favoriteKey, ids);
+    prefs.setStringList(_favoriteKey, ids.toSet().toList());
     return true;
   }
 }

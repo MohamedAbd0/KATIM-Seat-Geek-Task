@@ -3,8 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:katim_task/presentation/view/pages/listing_page.dart';
 import 'di.dart' as di;
-import 'domain/repositories/online_repository.dart';
-import 'domain/repositories/offline_repository.dart';
 import 'utils/service/shared_pref.dart';
 import 'presentation/cubits/local_events/local_events_cubit.dart';
 import 'presentation/cubits/remote_events/remote_events_cubit.dart';
@@ -31,14 +29,11 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => RemoteEventsCubit(
-            di.locator<OnlineEventRepository>(),
-          ),
+          create: (context) => di.locator<RemoteEventsCubit>(),
         ),
         BlocProvider(
-          create: (context) => LocalEventsCubit(
-            di.locator<OfflineEventRepository>(),
-          )..getAllFavoritesEvents(),
+          create: (context) =>
+              di.locator<LocalEventsCubit>()..getAllFavoritesEvents(),
         ),
       ],
       child: const MaterialApp(
